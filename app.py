@@ -1,6 +1,7 @@
 import os
 import re
 import secrets
+import string
 from contextlib import contextmanager
 
 import mysql.connector
@@ -43,7 +44,7 @@ def valid_password(password):
         and re.search(r"[a-z]", password)
         and re.search(r"[A-Z]", password)
         and re.search(r"[0-9]", password)
-        and re.search(r"[^A-Za-z0-9]", password)
+        and any(char in string.punctuation for char in password)
     )
 
 

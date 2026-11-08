@@ -1,12 +1,28 @@
 {% extends "base.html" %}
 {% block title %}注册 | 校园二手交易系统{% endblock %}
+{% block card_class %}register-card{% endblock %}
 {% block content %}
 <h2>创建账号</h2>
-<form method="post">
-  <label>数字账号<input name="account" inputmode="numeric" autocomplete="username" required></label>
-  <label>密码<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="20" required></label>
-  <p class="hint">密码为8～20位，需包含大小写字母、数字和特殊标点符号。</p>
-  <button type="submit">注册</button>
+<form method="post" class="register-form">
+  <label class="register-account">数字账号<input name="account" inputmode="numeric" autocomplete="username" required></label>
+  <div class="password-field">
+    <label for="register-password">密码</label>
+    <input id="register-password" name="password" type="password" autocomplete="new-password" aria-describedby="password-help" minlength="8" maxlength="20" required>
+    <noscript><p class="hint">密码为8～20位，需包含大小写字母、数字和特殊标点符号。</p></noscript>
+  </div>
+  <aside id="password-help" class="password-help" aria-label="密码填写要求" hidden>
+    <h3>密码填写要求</h3>
+    <ul>
+      <li data-rule="length"><span class="rule-icon" aria-hidden="true">○</span><span>8～20位</span><span class="rule-status">未满足</span></li>
+      <li data-rule="lower"><span class="rule-icon" aria-hidden="true">○</span><span>小写字母</span><span class="rule-status">未满足</span></li>
+      <li data-rule="upper"><span class="rule-icon" aria-hidden="true">○</span><span>大写字母</span><span class="rule-status">未满足</span></li>
+      <li data-rule="digit"><span class="rule-icon" aria-hidden="true">○</span><span>数字</span><span class="rule-status">未满足</span></li>
+      <li data-rule="punctuation"><span class="rule-icon" aria-hidden="true">○</span><span>特殊标点符号</span><span class="rule-status">未满足</span></li>
+    </ul>
+    <p id="password-progress" role="status" aria-live="polite">已满足 0/5 项</p>
+  </aside>
+  <button class="register-submit" type="submit">注册</button>
 </form>
 <p>已有账号？<a href="{{ url_for('login') }}">返回登录</a></p>
+<script src="{{ url_for('static', filename='register.js') }}" defer></script>
 {% endblock %}
