@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}注册 | 校园二手交易系统{% endblock %}
+{% block content %}
+<h2>创建账号</h2>
+<form method="post">
+  <label>数字账号<input name="account" inputmode="numeric" autocomplete="username" required></label>
+  <label>密码<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="20" required></label>
+  <p class="hint">密码为8～20位，需包含大小写字母、数字和特殊标点符号。</p>
+  <button type="submit">注册</button>
+</form>
+<p>已有账号？<a href="{{ url_for('login') }}">返回登录</a></p>
+{% endblock %}

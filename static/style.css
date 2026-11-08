@@ -1,0 +1,18 @@
+:root { font-family: system-ui, "Microsoft YaHei", sans-serif; color: #17212b; background: #f2f5f8; }
+body { min-height: 100vh; margin: 0; display: grid; place-items: center; }
+.card { box-sizing: border-box; width: min(92vw, 430px); padding: 2rem; background: white; border-radius: 14px; box-shadow: 0 12px 40px #23364d18; }
+h1 { margin: 0 0 1.5rem; font-size: 1.35rem; }
+h2 { margin: 0 0 1.25rem; font-size: 1.15rem; }
+form { display: grid; gap: 1rem; }
+label { display: grid; gap: .45rem; font-size: .95rem; }
+input { box-sizing: border-box; width: 100%; padding: .75rem; border: 1px solid #cbd5df; border-radius: 7px; font: inherit; }
+input:focus { outline: 2px solid #8bb8f5; border-color: #3978cc; }
+button { padding: .8rem; border: 0; border-radius: 7px; color: white; background: #2563b8; font: inherit; cursor: pointer; }
+button:hover { background: #194f98; }
+button.secondary { background: #536273; }
+a { color: #2563b8; }
+.hint { color: #657487; font-size: .88rem; }
+.messages { padding: 0; list-style: none; }
+.messages li { padding: .7rem; border-radius: 6px; }
+.messages .error { color: #8f2525; background: #fff0ef; }
+.messages .success { color: #17643b; background: #eaf8ef; }

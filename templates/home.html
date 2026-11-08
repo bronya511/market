@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}已登录 | 校园二手交易系统{% endblock %}
+{% block content %}
+<h2>登录成功</h2>
+<p>欢迎，账号 {{ account }}。</p>
+<p class="hint">当前专项范围为注册与登录，商品交易功能尚未接入。</p>
+<form method="post" action="{{ url_for('logout') }}"><button class="secondary" type="submit">退出登录</button></form>
+{% endblock %}

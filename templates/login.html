@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}登录 | 校园二手交易系统{% endblock %}
+{% block content %}
+<h2>用户登录</h2>
+<form method="post">
+  <label>数字账号<input name="account" inputmode="numeric" autocomplete="username" required></label>
+  <label>密码<input name="password" type="password" autocomplete="current-password" required></label>
+  {% if captcha_required %}<label>验证码（{{ captcha_question }}）<input name="captcha" inputmode="numeric" required></label>{% endif %}
+  <button type="submit">登录</button>
+</form>
+<p>还没有账号？<a href="{{ url_for('register') }}">立即注册</a></p>
+{% endblock %}
