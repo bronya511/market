@@ -1,5 +1,15 @@
 const passwordInput = document.getElementById("register-password");
 const passwordHelp = document.getElementById("password-help");
+const passwordToggle = document.querySelector(".register-form .login-password-toggle");
+
+if (passwordInput && passwordToggle) {
+  passwordToggle.addEventListener("click", () => {
+    const visible = passwordInput.type === "password";
+    passwordInput.type = visible ? "text" : "password";
+    passwordToggle.setAttribute("aria-label", visible ? "隐藏密码" : "显示密码");
+    passwordToggle.setAttribute("aria-pressed", String(visible));
+  });
+}
 
 if (passwordInput && passwordHelp) {
   const checks = {

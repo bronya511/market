@@ -1,12 +1,47 @@
 {% extends "base.html" %}
 {% block title %}登录 | 校园二手交易系统{% endblock %}
+{% block card_class %}login-card{% endblock %}
 {% block content %}
-<h2>用户登录</h2>
-<form method="post">
-  <label>数字账号<input name="account" inputmode="numeric" autocomplete="username" required></label>
-  <label>密码<input name="password" type="password" autocomplete="current-password" required></label>
-  {% if captcha_required %}<label>验证码（{{ captcha_question }}）<input name="captcha" inputmode="numeric" required></label>{% endif %}
-  <button type="submit">登录</button>
-</form>
-<p>还没有账号？<a href="{{ url_for('register') }}">立即注册</a></p>
+<div class="login-layout">
+  <section class="login-intro" aria-label="平台介绍">
+    <div class="login-intro-content">
+      <span class="login-eyebrow">CAMPUS MARKET · 校园闲置</span>
+      <h2>让好物，<br>在校园里继续发光。</h2>
+      <p>登录你的账号，开启轻松的校园二手交易。</p>
+    </div>
+    <div class="login-art" aria-hidden="true">
+      <span class="art-orbit art-orbit-one"></span>
+      <span class="art-orbit art-orbit-two"></span>
+      <span class="art-bag"><span class="art-bag-handle"></span><span class="art-bag-mark">↗</span></span>
+      <span class="art-spark art-spark-one">✦</span>
+      <span class="art-spark art-spark-two">✦</span>
+    </div>
+    <p class="login-intro-foot">发现闲置 · 分享好物 · 连接同学</p>
+  </section>
+
+  <section class="login-panel" aria-labelledby="login-title">
+    <span class="login-panel-eyebrow">欢迎回来</span>
+    <h2 id="login-title">登录账号</h2>
+    <p class="login-subtitle">输入账号信息，继续探索校园好物。</p>
+    <form method="post" class="login-form">
+      <label for="login-account">数字账号</label>
+      <input id="login-account" name="account" inputmode="numeric" autocomplete="username" placeholder="请输入数字账号" required>
+      <label for="login-password">密码</label>
+      <div class="login-password-field">
+        <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" required>
+        <button class="login-password-toggle" type="button" aria-label="显示密码" aria-controls="login-password" aria-pressed="false">
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18M10.6 6.1A11 11 0 0 1 12 6c6 0 9.5 6 9.5 6a13.5 13.5 0 0 1-3.1 3.5M6.2 7.6C3.8 9.3 2.5 12 2.5 12s3.5 6 9.5 6c1.3 0 2.5-.3 3.6-.8"/><path d="M10 10a3 3 0 0 0 4 4"/></svg>
+        </button>
+      </div>
+      {% if captcha_required %}
+      <label for="login-captcha">验证码 <span class="login-captcha-question">{{ captcha_question }}</span></label>
+      <input id="login-captcha" name="captcha" inputmode="numeric" placeholder="请输入计算结果" required>
+      {% endif %}
+      <button type="submit">登录账号 <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="login-register">还没有账号？<a href="{{ url_for('register') }}">立即注册 <span aria-hidden="true">↗</span></a></p>
+  </section>
+</div>
+<script src="{{ url_for('static', filename='login.js') }}" defer></script>
 {% endblock %}
